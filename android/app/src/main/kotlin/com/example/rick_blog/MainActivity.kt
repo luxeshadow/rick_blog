@@ -1,4 +1,4 @@
-package com.example.flutter_clean_archi
+package com.example.rick_blog
 
 import io.flutter.embedding.android.FlutterActivity
 

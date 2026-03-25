@@ -11,5 +11,4 @@ class AppFonts {
     return Platform.isIOS ? sfPro : inter;
   }
 
-
 }

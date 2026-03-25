@@ -1,4 +1,4 @@
-# flutter_clean_archi
+# rick_blog
 
 A new Flutter project.
 

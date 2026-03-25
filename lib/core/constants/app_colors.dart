@@ -8,15 +8,17 @@ class AppColors {
   // Light Colors
   //----------------------------------------------------------------------------
   static const Map<String, Color> _androidLight = {
-    'primary': Color(0xFF006FE6),
-    'secondary': Color(0xFF006FE6),
-    'tertiary': Color(0xFF006FE6),
+    'primary': Color.fromARGB(255, 18, 181, 164),
+    'secondary': Color.fromARGB(255, 164, 18, 181),
+    'tertiary': Color.fromARGB(255, 181, 164, 18),
     'background': Color(0xFFF2F2F0),
     'appBar': Colors.white,
     'container': Color(0xFFD9D8D7),
     'text': Color(0xFF030302),
     'subText': Color(0xFF4D4D4C),
-    'icon': Color(0xFF030302),
+    'hintText': Color(0xFFD9D8D7),
+    'icon': Color(0xFF4D4D4C),
+    'outline': Color(0xFFD9D8D7),
     'success': Colors.green,
     'warning': Colors.orange,
     'error': Colors.red,
@@ -30,15 +32,17 @@ class AppColors {
   // Dark Colors
   //----------------------------------------------------------------------------
   static const Map<String, Color> _androidDark = {
-    'primary': Color(0xFF1A8AFF),
-    'secondary': Color(0xFF1A8AFF),
-    'tertiary': Color(0xFF1A8AFF),
+    'primary': Color.fromARGB(255, 18, 181, 164),
+    'secondary': Color.fromARGB(255, 164, 18, 181),
+    'tertiary': Color.fromARGB(255, 181, 164, 18),
     'background': Color(0xFF1C1C1A),
     'appBar': Color(0xFF2C2C2A),
     'container': Color(0xFF2D2D2B),
     'text': Color(0xFFF2F2F0),
     'subText': Color(0xFFB3B3B0),
+    'hintText': Color(0xFFD9D8D7),
     'icon': Color(0xFFF2F2F0),
+    'outline': Color.fromARGB(255, 199, 199, 198),
     'success': Colors.green,
     'warning': Colors.orange,
     'error': Colors.red,
@@ -57,12 +61,12 @@ class AppColors {
 
     if (brightness == Brightness.light) {
       return isIOS
-          ? (_iosLight[type] ?? _androidLight[type] ?? Colors.transparent)
-          : (_androidLight[type] ?? Colors.transparent);
+          ? (_iosLight[type] ?? _androidLight[type] ?? Colors.red)
+          : (_androidLight[type] ?? Colors.red);
     } else {
       return isIOS
-          ? (_iosDark[type] ?? _androidDark[type] ?? Colors.transparent)
-          : (_androidDark[type] ?? Colors.transparent);
+          ? (_iosDark[type] ?? _androidDark[type] ?? Colors.red)
+          : (_androidDark[type] ?? Colors.red);
     }
   }
 }
