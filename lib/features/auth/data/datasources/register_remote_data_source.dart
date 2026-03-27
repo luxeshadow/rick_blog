@@ -1,9 +1,10 @@
+import 'package:rick_blog/features/auth/data/models/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:rick_blog/core/error/exeptions.dart';
 
 
 abstract class RegisterRemoteDataSource {
-  Future<String> register({
+  Future<UserModel> register({
     required String fullName,
     required String email,
     required String password,
@@ -14,7 +15,7 @@ class RegisterRemoteDataSourceImpl implements RegisterRemoteDataSource {
   final SupabaseClient supabaseClient;
   RegisterRemoteDataSourceImpl(this.supabaseClient);
   @override
-  Future<String> register({
+  Future<UserModel> register({
     required String fullName,
     required String email,
     required String password,
@@ -34,7 +35,7 @@ class RegisterRemoteDataSourceImpl implements RegisterRemoteDataSource {
         
       }
        print('success');
-      return response.user!.id;
+      return response.user!.toJson();
     } catch (e) {
       throw ServerExeption(e.toString());
     }
