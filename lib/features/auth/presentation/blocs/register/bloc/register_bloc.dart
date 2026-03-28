@@ -3,6 +3,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:flutter/material.dart';
 import 'package:rick_blog/features/auth/application/params/register_params.dart';
 import 'package:rick_blog/features/auth/application/usecases/register_usecase.dart';
+import 'package:rick_blog/features/auth/domain/entities/user.dart';
 
 part 'register_event.dart';
 part 'register_state.dart';
@@ -13,6 +14,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     : _registerUsecase = registerUsecase,
       super(RegisterInitial()) {
     on<RegisterUser>((event, emit) async {
+      emit(RegisterLoading());
       final res = await _registerUsecase(
         RegisterParams(
           fullName: event.fullName,
@@ -22,8 +24,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       );
       res.fold(
         (failure) => emit(RegisterFailure(failure.message)),
-        (success) => emit(RegisterSuccess(success)),
-      );
+        (user){
+          emit(RegisterSuccess(user));
+        }
+   );
     });
   }
 }

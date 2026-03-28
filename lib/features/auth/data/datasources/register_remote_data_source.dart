@@ -35,7 +35,7 @@ class RegisterRemoteDataSourceImpl implements RegisterRemoteDataSource {
         
       }
        print('success');
-      return response.user!.toJson();
+      return UserModel.fromJson(response.user!.toJson());
     } catch (e) {
       throw ServerExeption(e.toString());
     }

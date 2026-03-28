@@ -100,10 +100,17 @@ class _LoginPageState extends State<LoginPage> {
                       }
                     },
                   ),
-
+                  const SizedBox(height: 10),
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
+                      style: TextButton.styleFrom(
+                        padding:
+                            EdgeInsets.zero, // 🔥 enlève le padding interne
+                        minimumSize: Size.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        alignment: Alignment.centerRight,
+                      ),
                       onPressed: () {
                         // context.push(AppRouter.forgotPassword);
                       },
@@ -116,6 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 10),
                   Row(
                     children: [
                       Expanded(
@@ -162,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
 
                   AuthButton(
-                    backgroundColor: Theme.of(context).colorScheme.,
+                    backgroundColor: Colors.black,
                     image: Image.asset(
                       AppImages.get('apple'),
                       width: 24,
@@ -179,8 +187,6 @@ class _LoginPageState extends State<LoginPage> {
                       print('Apple Login');
                     },
                   ),
-                 
-                  
 
                   const SizedBox(height: 20),
 
@@ -194,13 +200,12 @@ class _LoginPageState extends State<LoginPage> {
                           text: 'Sign Up',
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              context.go(AppRouter.register);
+                              context.push(AppRouter.register);
                             },
 
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(
                                 color: primaryColor,
-                                decoration: TextDecoration.underline,
                                 decorationColor: primaryColor,
                                 fontWeight: FontWeight.bold,
                               ),
